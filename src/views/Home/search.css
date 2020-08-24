@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  height: 30px;
+  text-align: center;
+}
+.form input {
+  height: 40px;
+}
+.form button {
+  height: 40px;
+}

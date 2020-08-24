@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SubHeader } from 'components'
 import { SomosClient } from 'utils'
+import Search from './search'
 
 import styles from './Home.module.css'
 
@@ -15,10 +16,10 @@ class Home extends React.Component {
       <React.Fragment>
         <SubHeader
           breadcrumb={[{ text: 'Home' }]}
-          heading="Somos Front-end Challange"
+          heading="Somos Front-end Challange - Flávio"
         />
         <div className={styles.wrapper}>
-          <h1>Hi</h1>
+          <Search />
         </div>
       </React.Fragment>
     )
