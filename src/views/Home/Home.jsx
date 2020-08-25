@@ -6,10 +6,10 @@ import Search from './search'
 
 import styles from './Home.module.css'
 
+const client = new SomosClient()
+
 class Home extends React.Component {
   state = {}
-
-  client = new SomosClient()
 
   render() {
     return (
@@ -19,7 +19,9 @@ class Home extends React.Component {
           heading="Somos Front-end Challange - Flávio"
         />
         <div className={styles.wrapper}>
-          <Search />
+          <Search 
+            getArtistList={client.getArtistList} 
+            searchArtists={client.searchArtists}/>
         </div>
       </React.Fragment>
     )
