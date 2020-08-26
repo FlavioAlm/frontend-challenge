@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
+
 import './search.css'
-
+import DisplayArtist from './displayArtist';
 import { SomosClient } from 'utils'
-import { clearToken, getToken } from 'utils'
-import { func } from 'prop-types';
 
-function Search(props) {
+function Search() {
   const [query, setQuery] = useState("")
   const [artistList, setArtistList] = useState()
+  const client = new SomosClient()
 
   function handleChange(e) {
     const newValue = e.target.value
     setQuery(newValue)
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = async e => {
     e.preventDefault()
-    props.searchArtists(query)
-    const newArtistList = props.getArtistList()
-    console.log(newArtistList)
-
+    const result = await client.search(query)
+    setArtistList(result.artists.items)
     setQuery("")
-    console.log(artistList)
   }
 
   return (
@@ -30,6 +27,7 @@ function Search(props) {
         <input placeholder="Entre com o nome de um Artista" onChange={handleChange}></input>
         <button>Procurar</button>
       </form>
+      <DisplayArtist data={artistList} />
     </div>
   );
 }

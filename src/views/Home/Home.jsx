@@ -1,12 +1,9 @@
 import React from 'react'
 
 import { SubHeader } from 'components'
-import { SomosClient } from 'utils'
 import Search from './search'
 
 import styles from './Home.module.css'
-
-const client = new SomosClient()
 
 class Home extends React.Component {
   state = {}
@@ -19,9 +16,7 @@ class Home extends React.Component {
           heading="Somos Front-end Challange - Flávio"
         />
         <div className={styles.wrapper}>
-          <Search 
-            getArtistList={client.getArtistList} 
-            searchArtists={client.searchArtists}/>
+          <Search  />
         </div>
       </React.Fragment>
     )

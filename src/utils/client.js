@@ -1,47 +1,33 @@
-import { clearToken, getToken } from 'utils'
+import axios from 'axios'
 
-import Spotify from 'spotify-web-api-js';
-import React, { Component } from 'react';
-
-const spotifyWebApi = new Spotify ();
+import { getToken } from 'utils'
 
 class SomosClient {
-  constructor(props) {
-    this.state = {
-      artistList: {},
-      accessToken: getToken() 
-    }
-
-    console.log("construtor")
-    console.log(this)
-
-    spotifyWebApi.setAccessToken(this.state.accessToken)
-    this.getArtistList = this.getArtistList.bind(this)
-    this.searchArtists = this.searchArtists.bind(this)
-  }
-  
-  onError = error => {}
-
-  getArtistList() {
-    console.log("get")
-    console.log(this)
-    console.log(this.state.artistList)
-    return this.state.artistList
+  //onError = error => {}
+  constructor() {
+    this.token = getToken()
   }
 
-  async searchArtists(query) {
-    console.log("search")
-    console.log(query)
-    spotifyWebApi.searchArtists(query)
-    .then( response => {
-      console.log(response)
-      const artistList = response.artists.items;
-      console.log(this)
-      this.setState({
-        artistList: artistList
-      })
-    })
+
+  // axios.get(url, data, config)
+  // ns = async foo(arg) => { func(), return }
+  search = async query => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/search?q=${query}&type=artist`,
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${this.token}`
+        }
+      }, 
+    )
+    return data
   }
+
+
+
+
+
 
 }
 
