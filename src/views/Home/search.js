@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 import './search.css'
-//import DisplayArtist from '../DisplayArtist';
 import { SomosClient } from 'utils'
 
 function Search() {
@@ -30,7 +29,10 @@ function Search() {
       </form>
       { artistList &&
         <p>
-          <Link to={`/artista/${artistList[0].id}`}>{artistList[0].name}</Link>
+          <br/>
+          <br/>
+          <label className="result">Resultado: </label>
+          <Link className="result" to={`/artista/${artistList[0].id}`}>{artistList[0].name}</Link>
         </p>
       }
     </div>
