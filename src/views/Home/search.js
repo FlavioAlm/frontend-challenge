@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 import './search.css'
-import DisplayArtist from './displayArtist';
+//import DisplayArtist from '../DisplayArtist';
 import { SomosClient } from 'utils'
 
 function Search() {
@@ -27,9 +28,14 @@ function Search() {
         <input placeholder="Entre com o nome de um Artista" onChange={handleChange}></input>
         <button>Procurar</button>
       </form>
-      <DisplayArtist data={artistList} />
+      { artistList &&
+        <p>
+          <Link to={`/artista/${artistList[0].id}`}>{artistList[0].name}</Link>
+        </p>
+      }
     </div>
   );
 }
 
+          //<DisplayArtist data={artistList} />
 export default Search;

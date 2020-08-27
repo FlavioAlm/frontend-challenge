@@ -1,13 +1,19 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import { Layout } from 'components'
-import { Home } from 'views'
+import { Home, DisplayArtist } from 'views'
 
 import './App.module.css'
 
 const App = () => (
   <Layout>
-    <Home />
+    <Router>
+      <Switch>
+        <Route path="/artista/:id" component={DisplayArtist} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
   </Layout>
 )
 

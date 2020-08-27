@@ -8,7 +8,6 @@ class SomosClient {
     this.token = getToken()
   }
 
-
   // axios.get(url, data, config)
   // ns = async foo(arg) => { func(), return }
   search = async query => {
@@ -24,7 +23,18 @@ class SomosClient {
     return data
   }
 
-
+  getArtist = async id => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/artists/${id}`,
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${this.token}`
+        }
+      },
+    )
+    return data
+  }
 
 
 
