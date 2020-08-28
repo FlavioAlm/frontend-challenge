@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
 
 import './search.css'
 import { SomosClient } from 'utils'
+import Suggestions from './Suggestions'
 
 function Search() {
   const [query, setQuery] = useState("")
   const [artistList, setArtistList] = useState()
   const client = new SomosClient()
 
-  function handleChange(e) {
+  const handleChange = async e => {
     const newValue = e.target.value
+
+    if (newValue.length > 2) {
+      const result = await client.search(newValue)
+      setArtistList(result.artists.items)
+    }
     setQuery(newValue)
   }
 
@@ -24,20 +29,20 @@ function Search() {
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
-        <input placeholder="Entre com o nome de um Artista" onChange={handleChange}></input>
-        <button>Procurar</button>
+        <input 
+          placeholder="Entre com um Artista" 
+          onChange={handleChange}
+          value={query}
+        >
+        </input>
+        { artistList &&
+          <Suggestions results={artistList} />
+        }
       </form>
-      { artistList &&
-        <p>
-          <br/>
-          <br/>
-          <label className="result">Resultado: </label>
-          <Link className="result" to={`/artista/${artistList[0].id}`}>{artistList[0].name}</Link>
-        </p>
-      }
+      
+
     </div>
   );
 }
 
-          //<DisplayArtist data={artistList} />
 export default Search;
