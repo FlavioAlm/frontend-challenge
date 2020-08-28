@@ -16,7 +16,7 @@ class Home extends React.Component {
           heading="Somos Front-end Challange - Flávio"
         />
         <div className={styles.wrapper}>
-          <Search  />
+          <Search />
         </div>
       </React.Fragment>
     )

@@ -12,21 +12,26 @@ class Artist extends React.Component {
   async componentDidMount() {
     const artistId = this.props.match.params.id
     const result = await this.client.getArtist(artistId)
-    this.setState({ artist: result, loading: false })
+    const artistAlbums = await this.client.getArtistAlbums(artistId)
+    this.setState({ artist: result, albums: artistAlbums.items, loading: false })
   }
 
   client = new SomosClient()
 
+
   render() {
-    const { loading, artist } = this.state
+    const { loading, albums, artist } = this.state
+    console.log(albums)
+    console.log(artist)
     if (loading)
       return null
     return (
+      <div>
         <div className="artist-card">
           <img
             className="artis-box image" 
             src={artist.images[1].url} 
-            alt={artist.name} style={{width:350}}
+            alt={artist.name} style={{width:280}}
           />
 
           <div className="info">
@@ -49,6 +54,20 @@ class Artist extends React.Component {
               <Link className="link" to={`/`}>Return</Link>
             </p>
         </div>
+        <div className="album">
+          {artist &&
+            albums.map( item => (
+              <ul key={item.name}>
+                <li><label>{item.name}</label></li>
+                <li><label>{item.release_date}</label></li>
+                <li><img src={item.images[0].url} width="100" alt={item.name}/></li>
+                <br></br>
+              </ul>
+            ))
+          }
+        </div>
+      </div>
+
     )
   }
 

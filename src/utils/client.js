@@ -36,8 +36,18 @@ class SomosClient {
     return data
   }
 
-
-
+  getArtistAlbums = async id => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/artists/${id}/albums`,
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${this.token}`
+        }
+      },
+    )
+    return data
+  }
 
 }
 
