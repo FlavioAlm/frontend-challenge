@@ -1,16 +1,20 @@
 .form {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  border: 1px solid gray;
+  -webkit-box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.67);
+  -moz-box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.67);
+  box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.67);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
 }
 
-.form input {
-  height: 40px;
+.form-field {
+  width: 100%;
   font-size: 25px;
-  text-align: center;
-}
-.form button {
-  font-size: 25px;
-  height: 40px;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
 }
 
 .result {

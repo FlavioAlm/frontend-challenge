@@ -14,7 +14,7 @@ function Search() {
 
     if (newValue.length > 2) {
       const result = await client.search(newValue)
-      setArtistList(result.artists.items)
+      setArtistList(result.artists.items.slice(0, 10 - 1.5*newValue.length))
     }
     setQuery(newValue)
   }
@@ -27,21 +27,19 @@ function Search() {
   }
 
   return (
-    <div>
-      <form className="form" onSubmit={handleSubmit}>
-        <input 
-          placeholder="Entre com um Artista" 
-          onChange={handleChange}
-          value={query}
-        >
-        </input>
-        { artistList &&
-          <Suggestions results={artistList} />
-        }
-      </form>
-      
-
-    </div>
+    <form className="form" onSubmit={handleSubmit}>
+      <input 
+        placeholder="Entre com um Artista" 
+        onChange={handleChange}
+        type="text"
+        value={query}
+        className="form-field"
+      >
+      </input>
+      { artistList && query.length > 1 &&
+        <Suggestions results={artistList} />
+      }
+    </form>
   );
 }
 
