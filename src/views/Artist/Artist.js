@@ -44,9 +44,10 @@ class Artist extends React.Component {
       <div>
         <div className="artist-card">      
           <img
-            className="artis-box image" 
+            className="artist-box image" 
             src={imageURL} 
-            alt={artist.name} style={{width:280}}
+            alt={artist.name} 
+            //style={{width:280}}
           />
 
           <div className="info">
