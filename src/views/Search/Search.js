@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import './search.css'
 import { SomosClient } from 'utils'
-import Suggestions from './Suggestions'
+import Suggestions from '../../components/Suggestions'
+import './Search.css'
 
 function Search() {
   const [query, setQuery] = useState("")
@@ -12,7 +12,7 @@ function Search() {
   const handleChange = async e => {
     const newValue = e.target.value
 
-    if (newValue.length > 2) {
+    if (newValue.length > 3) {
       const result = await client.search(newValue)
       setArtistList(result.artists.items.slice(0, 10 - 1.5*newValue.length))
     }

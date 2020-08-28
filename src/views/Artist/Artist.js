@@ -1,6 +1,7 @@
 import React from 'react';
-import { SomosClient } from 'utils'
 import { Link } from 'react-router-dom'
+
+import { SomosClient } from 'utils'
 
 import './Artist.css'
 
@@ -14,23 +15,37 @@ class Artist extends React.Component {
     const result = await this.client.getArtist(artistId)
     const artistAlbums = await this.client.getArtistAlbums(artistId)
     this.setState({ artist: result, albums: artistAlbums.items, loading: false })
+    console.log(artistId)
+    console.log(this)
   }
 
   client = new SomosClient()
 
-
   render() {
-    const { loading, albums, artist } = this.state
+    console.log(this)
+    const { artist, albums, loading } = this.state
     console.log(albums)
     console.log(artist)
-    if (loading)
+
+    
+    if (loading) {
+      console.log("loading")
       return null
+    }
+
+    let imageURL=""
+    if (artist.images === undefined) {
+      imageURL="default-picure.png"
+    } else {
+      imageURL=artist.images[1].url
+    }
+
     return (
       <div>
-        <div className="artist-card">
+        <div className="artist-card">      
           <img
             className="artis-box image" 
-            src={artist.images[1].url} 
+            src={imageURL} 
             alt={artist.name} style={{width:280}}
           />
 

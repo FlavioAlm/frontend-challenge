@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { SubHeader } from 'components'
-import Search from './search'
 
 import styles from './Home.module.css'
 
@@ -16,7 +16,8 @@ class Home extends React.Component {
           heading="Somos Front-end Challange - Flávio"
         />
         <div className={styles.wrapper}>
-          <Search />
+          <img src="lupa.jpg" alt="lupa" />
+          <Link to={`/busca`}> Searching for an Artist </Link>
         </div>
       </React.Fragment>
     )
