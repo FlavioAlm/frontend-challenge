@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 import { SomosClient } from 'utils'
-
-import './Artist.css'
+import RenderArtist from './RenderArtist'
+import Albums from '../Albums/Albums'
 
 class Artist extends React.Component {
   state= {
@@ -21,73 +20,18 @@ class Artist extends React.Component {
 
   render() {
     const { artist, albums, loading } = this.state
-
-    if (loading) {
-      console.log("loading")
-      return null
-    }
-
-    let imageURL=""
-    if (artist.images === undefined) {
-      imageURL="default-picure.png"
-    } else {
-      imageURL=artist.images[1].url
-    }
+    if (loading) return <h2> Loading... </h2>
 
     return (
       <div>
-        <div className="artist-card">      
-          <img
-            className="artist-image" 
-            src={imageURL} 
-            alt={artist.name} 
-          />
+      <RenderArtist artist={artist} />
 
-          <div className="artist-info">
-            <label className="info-box">{`Name: ${artist.name}`}</label>
-            <label className="info-box">{`Popularity: ${artist.popularity}`}</label>
-          </div>
-
-          <label className="artist-genres-strip">Genres</label>
-            <ul className="artist-genre-box">
-            {artist && 
-              artist.genres.map(genre => 
-                  <li className="artist-genre-item" key={genre}>{genre}</li>
-              )
-            }
-            </ul>
-
-            <p>
-              <Link className="artist-link" to={`/`}>Return</Link>
-            </p>
-        </div>
-        <hr/>
-
-        <h2 className="album-heading">Albums</h2>
-        <hr/>
-
-        <div className="album-container">
-          {artist &&
-            albums.map( item => 
-              <ul className="album-card" key={item.name}>
-                <li>
-                  <img 
-                    className="album-image" 
-                    src={item.images[0].url}  
-                    alt={item.name}
-                  />
-                </li>
-                <li><label className="album-name">{item.name}</label></li>
-                <li><label className="album-date">{item.release_date}</label></li>
-              </ul>
-            )
-          }
-        </div>
+      { artist &&
+        <Albums albums={albums} />
+      }
       </div>
-
     )
   }
-
   
 }
 
