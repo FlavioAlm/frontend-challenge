@@ -37,7 +37,7 @@ const RenderArtist = ({artist}) => {
         </ul>
 
         <p>
-          <Link className="artist-link" to={`/`}>Return</Link>
+          <Link className="artist-link" to={`/busca`}>Return</Link>
         </p>
       </div>
     </>
