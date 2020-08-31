@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import { SomosClient } from 'utils'
-import Suggestions from '../../components/Suggestions'
+import Suggestions from '../../components/Suggestions/Suggestions'
+
 import './Search.css'
 
 function Search() {

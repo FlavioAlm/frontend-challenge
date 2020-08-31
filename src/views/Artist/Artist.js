@@ -15,19 +15,13 @@ class Artist extends React.Component {
     const result = await this.client.getArtist(artistId)
     const artistAlbums = await this.client.getArtistAlbums(artistId)
     this.setState({ artist: result, albums: artistAlbums.items, loading: false })
-    console.log(artistId)
-    console.log(this)
   }
 
   client = new SomosClient()
 
   render() {
-    console.log(this)
     const { artist, albums, loading } = this.state
-    console.log(albums)
-    console.log(artist)
 
-    
     if (loading) {
       console.log("loading")
       return null
@@ -44,42 +38,49 @@ class Artist extends React.Component {
       <div>
         <div className="artist-card">      
           <img
-            className="artist-box image" 
+            className="artist-image" 
             src={imageURL} 
             alt={artist.name} 
-            //style={{width:280}}
           />
 
-          <div className="info">
+          <div className="artist-info">
             <label className="info-box">{`Name: ${artist.name}`}</label>
             <label className="info-box">{`Popularity: ${artist.popularity}`}</label>
           </div>
 
-          <label className="genre-title">Genres</label>
-            <ul className="genre">
+          <label className="artist-genres-strip">Genres</label>
+            <ul className="artist-genre-box">
             {artist && 
-              Object.values(artist.genres)
-              .map( (genre) => {
-                return (
-                  <li className="genre-box" key={genre}>{genre}</li>
-                )
-              })}
+              artist.genres.map(genre => 
+                  <li className="artist-genre-item" key={genre}>{genre}</li>
+              )
+            }
             </ul>
 
             <p>
-              <Link className="link" to={`/`}>Return</Link>
+              <Link className="artist-link" to={`/`}>Return</Link>
             </p>
         </div>
-        <div className="album">
+        <hr/>
+
+        <h2 className="album-heading">Albums</h2>
+        <hr/>
+
+        <div className="album-container">
           {artist &&
-            albums.map( item => (
-              <ul key={item.name}>
-                <li><label>{item.name}</label></li>
-                <li><label>{item.release_date}</label></li>
-                <li><img src={item.images[0].url} width="100" alt={item.name}/></li>
-                <br></br>
+            albums.map( item => 
+              <ul className="album-card" key={item.name}>
+                <li>
+                  <img 
+                    className="album-image" 
+                    src={item.images[0].url}  
+                    alt={item.name}
+                  />
+                </li>
+                <li><label className="album-name">{item.name}</label></li>
+                <li><label className="album-date">{item.release_date}</label></li>
               </ul>
-            ))
+            )
           }
         </div>
       </div>
