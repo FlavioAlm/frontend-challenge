@@ -24,8 +24,9 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  padding: 0;
+  padding: 5%;
   margin: 1em 0em 1em 0em;
+  padding: 1%;
 }
 .info-box {
   width: 50%;
@@ -51,7 +52,7 @@
   align-items: center;
   
   font-size: 110%;
-  padding: 0;
+  padding: 1%;
   list-style: none;
   margin: 0.5em 0em 0.5em 0em;
   
@@ -102,7 +103,7 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    padding: 0;
+    padding: 1%;
     margin: 1em 0em 1em 0em;
   }
   .info-box {
@@ -129,7 +130,7 @@
     align-items: center;
     
     font-size: 110%;
-    padding: 0;
+    padding: 1%;
     list-style: none;
     margin: 0.5em 0em 0.5em 0em;
     

@@ -12,10 +12,16 @@ function Search() {
 
   const handleChange = async e => {
     const newValue = e.target.value
+    const slicingRate = 10 - 1.3*newValue.length
+    const maxSlicingRate = 6
 
-    if (newValue.length > 3) {
+    if (3 < newValue.length < maxSlicingRate) {
       const result = await client.search(newValue)
-      setArtistList(result.artists.items.slice(0, 10 - 1.5*newValue.length))
+      setArtistList(result.artists.items.slice(0, slicingRate))
+    }
+    if (newValue.length >= maxSlicingRate) {
+      const result = await client.search(newValue)
+      setArtistList(result.artists.items.slice(0, 3))      
     }
     setQuery(newValue)
   }
@@ -28,13 +34,14 @@ function Search() {
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <input 
         placeholder="Entre com um Artista" 
         onChange={handleChange}
         type="text"
         value={query}
-        className="form-field"
+        className="search-form-field"
+        required
       >
       </input>
       { artistList && query.length > 1 &&

@@ -19,15 +19,22 @@ const Albums = ({albums}) => {
       <div className="album-container">
         {albums.map( item => 
           <section className="album-card" key={item.name}>
-            <img 
-              className="album-image" 
-              src={item.images[0].url}  
-              alt={item.name}
-            />
-            <div className="album-info">
+            {!item.images.length
+              ? <img 
+                  className="album-image" 
+                  src="noImageAvailable.jpg"  
+                  alt="noImageAvailable.jpg"
+                />
+              :<img 
+                  className="album-image" 
+                  src={item.images[0].url}  
+                  alt={item.name}
+                />
+            }
+            <section className="album-info">
               <label className="album-info-item">{`Disco: ${item.name}`}</label>
               <label className="album-info-item">{`Release: ${dateToLocale(item.release_date)}`}</label>
-            </div>
+            </section>
           </section>
         )}
       </div>

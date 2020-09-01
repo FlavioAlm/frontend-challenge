@@ -1,6 +1,6 @@
 .suggestion-item {
   padding: 5px;
-  margin-bottom: 8px;
+  margin-bottom: 3px;
   margin-left: 5px;
 }
 .suggestion-item:hover {
@@ -13,7 +13,17 @@
 .suggestion-img {
   display: block;
   margin-left: 0px;
-  margin-top: 4px;
+  margin-top: 2px;
   padding: 0px;
   width: 20%;
+}
+
+@media (min-width: 600px) {
+  .suggestion-img {
+    display: block;
+    margin-left: 0px;
+    margin-top: 3px;
+    padding: 0px;
+    width: 10%;
+  }
 }

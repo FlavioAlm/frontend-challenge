@@ -22,11 +22,19 @@
   transform: scale(1.1);
 }
 .album-info {
-  display: block;
   text-align: center;
   align-self: center;
   padding: 2%;
   color: hsl(191, 50%, 50%);
+}
+.album-info-item {
+  display: flex;
+  flex-direction: column;
+  column-gap: 10%;
+  align-items: center;
+  font-size: 110%;
+  text-align: center;
+  padding: 3%;
 }
 .album-image {
   border-radius: 1em 1em 0 0;
@@ -37,13 +45,7 @@
 }
 
 @media (min-width: 500px) {
-  .album-heading {
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-  }
   .album-container {
-    display: flex;
     flex-flow: row wrap;
     margin: 0 auto;
     justify-content: center;
@@ -66,12 +68,11 @@
     flex-direction: column;
     column-gap: 10%;
     align-items: center;
-    justify-items: spacing;
     text-align: center;
     padding: 3%;
   }
   .album-info-item {
-    padding: 3%;
+    font-size: 100%;
   }
   .album-image {
     border-radius: 1em 1em 0 0;
