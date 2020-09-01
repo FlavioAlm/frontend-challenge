@@ -6,8 +6,7 @@ const Albums = ({albums}) => {
 
   const dateToLocale = (release_date) => {
     const AlbumDate = new Date (Date.parse(release_date))
-    const releaseDate = (AlbumDate).toLocaleDateString();
-    return releaseDate
+    return AlbumDate.toLocaleDateString()
   }
 
   return (
@@ -25,7 +24,7 @@ const Albums = ({albums}) => {
                   src="noImageAvailable.jpg"  
                   alt="noImageAvailable.jpg"
                 />
-              :<img 
+              : <img 
                   className="album-image" 
                   src={item.images[0].url}  
                   alt={item.name}

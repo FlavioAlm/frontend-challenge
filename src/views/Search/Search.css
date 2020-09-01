@@ -1,7 +1,7 @@
 .search-form {
-  position: absolute;
-  top: calc(var(--height-nav-bar) + 10%);
-  margin: 0 5%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
   border: 1px solid gray;
   box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.67);
 }
@@ -31,10 +31,10 @@ ul, li {
 
 @media (min-width: 600px) {
   .search-form {
-    width: 75%;
+    width: 80%;
     position: absolute;
-    top: calc(var(--height-nav-bar) + 10%);
-    margin: 0 10%;
+    top: var(--height-nav-bar);
+    margin: 10% 10%;
     border: 1px solid gray;
     box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.67);
   }

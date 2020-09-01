@@ -1,15 +1,20 @@
 .wrapper {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  justify-content: center;
+
   max-width: 1224px;
   padding: 30px 20px;
-  margin: 0 auto;
   font: 16px/14px 'Nunito', sans-serif;
-  text-align: left;
+  text-align: center;
   font-size: 30px;
 }
 
-img {
-  display: block;
-  width: 20%;
-  padding: 15px;
-  margin-left: 25px;
+.lupa {
+  justify-self: center;
+  align-self: center;
+  width: 30%;
+  max-width: 300px;
+  min-width: 100px;
 }

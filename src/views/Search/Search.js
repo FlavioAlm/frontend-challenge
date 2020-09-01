@@ -12,20 +12,16 @@ function Search() {
 
   const handleChange = async e => {
     const newValue = e.target.value
-    const slicingRate = 10 - 1.3*newValue.length
-    console.log("newVL:" + newValue.length)
-    console.log(slicingRate)
-    const maxSlicingRate = 6
+    const maxSuggestionsLettersToSearch = 6
+    const minSuggestionsItems = 3
+    let numSuggestionsItems = 10 - 1.3*newValue.length
 
-    if (3 < newValue.length  && newValue.length < maxSlicingRate) {
-      console.log("1o if")
+    if (newValue.length > 3) {
+      if (newValue.length >= maxSuggestionsLettersToSearch) {
+        numSuggestionsItems = minSuggestionsItems
+      }
       const result = await client.search(newValue)
-      setArtistList(result.artists.items.slice(0, slicingRate))
-    }
-    if (newValue.length >= maxSlicingRate) {
-      console.log("1o if")
-      const result = await client.search(newValue)
-      setArtistList(result.artists.items.slice(0, 3))      
+      setArtistList(result.artists.items.slice(0, numSuggestionsItems))
     }
     setQuery(newValue)
   }

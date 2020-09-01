@@ -4,34 +4,37 @@ import { Link } from 'react-router-dom'
 import "./RenderArtist.css"
 
 const RenderArtist = ({artist}) => {
-
-  
-  let imageURL=""
-  if (artist.images === undefined) {
-    imageURL="default-picure.png"
-  } else {
-    imageURL=artist.images[1].url
-  }
   
   return (
     <>
-      <div className="artist-card">      
-        <img
-          className="artist-image" 
-          src={imageURL} 
-          alt={artist.name} 
-        />
+      <article className="artist-card">
+        {!artist.images.length
+          ? <img
+              className="artist-image" 
+              src="noImageAvailable.jpg"  
+              alt="noImageAvailable.jpg"
+            />      
+          : <img
+              className="artist-image" 
+              src={artist.images[1].url} 
+              alt={artist.name} 
+            />
+        }
 
-        <div className="artist-info">
-          <label className="info-box">{`Name: ${artist.name}`}</label>
-          <label className="info-box">{`Popularity: ${artist.popularity}`}</label>
-        </div>
+        <section className="artist-info">
+          <label className="info-box">
+            {`Name: ${artist.name}`}
+          </label>
+          <label className="info-box">
+            {`Popularity: ${artist.popularity}`}
+          </label>
+        </section>
 
-        <label className="artist-genres-strip">Genres</label>
+        <h2 className="artist-genres-strip">Genres</h2>
         <ul className="artist-genre-box">
           {artist && 
             artist.genres.map(genre => 
-                <li className="artist-genre-item" key={genre}>{genre}</li>
+              <li className="artist-genre-item" key={genre}>{genre}</li>
             )
           }
         </ul>
@@ -39,7 +42,7 @@ const RenderArtist = ({artist}) => {
         <p>
           <Link className="artist-link" to={`/busca`}>Return</Link>
         </p>
-      </div>
+      </article>
     </>
   )
   }

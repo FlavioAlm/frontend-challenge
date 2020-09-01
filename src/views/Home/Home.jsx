@@ -16,7 +16,7 @@ class Home extends React.Component {
           heading="Somos Front-end Challange - Flávio"
         />
         <div className={styles.wrapper}>
-          <img src="lupa.jpg" alt="lupa" />
+          <img className={styles.lupa} src="magnifying glass.png" alt="magnifying glass" />
           <Link to={`/busca`}> Searching for an Artist </Link>
         </div>
       </React.Fragment>
