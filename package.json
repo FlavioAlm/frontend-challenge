@@ -24,12 +24,16 @@
   "devDependencies": {
     "@babel/core": "^7.2",
     "@babel/plugin-transform-runtime": "^7.11.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
     "eslint-config-plurall": "^1.5.28",
     "eslint-plugin-prettier": "^3.0.0",
     "jsencrypt": "^3.0.0-rc.1",
     "lint-staged": "^7.0.0",
     "opn": "^5.4.0",
-    "prettier": "^1.15.2"
+    "prettier": "^1.15.2",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.13.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [

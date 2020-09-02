@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { SomosClient } from 'utils'
+import { Albums } from 'views'
 import RenderArtist from './RenderArtist'
-import Albums from '../Albums/Albums'
+
 
 class Artist extends React.Component {
   state= {
@@ -23,13 +24,13 @@ class Artist extends React.Component {
     if (loading) return <h2> Loading... </h2>
 
     return (
-      <div>
-      <RenderArtist artist={artist} />
+      <main>
+        <RenderArtist artist={artist} />
 
-      { artist &&
-        <Albums albums={albums} />
-      }
-      </div>
+        { artist &&
+          <Albums albums={albums} />
+        }
+      </main>
     )
   }
   

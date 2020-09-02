@@ -15,9 +15,9 @@ const Albums = ({albums}) => {
         <h2 className="album-heading">Albums</h2>
       <hr/>
       
-      <div className="album-container">
+      <main className="album-container">
         {albums.map( item => 
-          <section className="album-card" key={item.name}>
+          <article className="album-card" key={item.name}>
             {!item.images.length
               ? <img 
                   className="album-image" 
@@ -31,12 +31,12 @@ const Albums = ({albums}) => {
                 />
             }
             <section className="album-info">
-              <label className="album-info-item">{`Disco: ${item.name}`}</label>
-              <label className="album-info-item">{`Release: ${dateToLocale(item.release_date)}`}</label>
+              <p className="album-info-item">{`Disco: ${item.name}`}</p>
+              <p className="album-info-item">{`Release: ${dateToLocale(item.release_date)}`}</p>
             </section>
-          </section>
+          </article>
         )}
-      </div>
+      </main>
     </>
   )
 }

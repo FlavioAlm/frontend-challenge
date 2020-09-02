@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { SomosClient } from 'utils'
-import Suggestions from '../../components/Suggestions/Suggestions'
+import { Suggestions } from 'components'
 
 import './Search.css'
 
