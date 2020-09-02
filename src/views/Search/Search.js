@@ -8,6 +8,8 @@ import './Search.css'
 function Search() {
   const [query, setQuery] = useState("")
   const [artistList, setArtistList] = useState()
+  const [isLoading, setIsLoading] = useState(false)
+
   const client = new SomosClient()
 
   const handleChange = async e => {
@@ -17,6 +19,7 @@ function Search() {
     let numSuggestionsItems = 10 - 1.3*newValue.length
 
     if (newValue.length > 3) {
+      setIsLoading(true)
       if (newValue.length >= maxSuggestionsLettersToSearch) {
         numSuggestionsItems = minSuggestionsItems
       }
@@ -24,6 +27,7 @@ function Search() {
       setArtistList(result.artists.items.slice(0, numSuggestionsItems))
     }
     setQuery(newValue)
+    setIsLoading(false)
   }
 
   const handleSubmit = async e => {
@@ -33,19 +37,25 @@ function Search() {
     setQuery("")
   }
 
+  const Loading = () => <h3 className="loading">Loading ...</h3>
+
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <input 
-        placeholder="Entre com um Artista" 
+        className="search-form-field"
+        placeholder="Search for your favorite Artist" 
         onChange={handleChange}
         type="text"
         value={query}
-        className="search-form-field"
         required
       >
       </input>
-      { artistList && query.length > 1 &&
-        <Suggestions results={artistList} />
+      
+      { isLoading
+        ? <Loading />
+        : (query.length > 3 &&
+            <Suggestions results={artistList} />
+          )
       }
     </form>
   );

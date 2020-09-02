@@ -1,7 +1,15 @@
+.loading {
+  align-self: left;
+  padding: 5px;
+  margin-bottom: 3px;
+  margin-left: 5px;
+}
+
 .search-form {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  border-radius: 10px;
   border: 1px solid gray;
   box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.67);
 }
@@ -10,6 +18,7 @@
   width: 100%;
   font-size: 25px;
   padding: 10px 10px;
+  border-radius: 10px;
   box-sizing: border-box;
   border: none;
   outline: none;
