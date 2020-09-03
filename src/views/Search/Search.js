@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { SomosClient } from 'utils'
 import { Suggestions } from 'components'
+import { withLoading } from 'components'
 
 import './Search.css'
 
@@ -37,7 +38,7 @@ function Search() {
     setQuery("")
   }
 
-  const Loading = () => <h3 className="loading">Loading ...</h3>
+  const SuggestionsWithLoading = withLoading(Suggestions)
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
@@ -50,12 +51,9 @@ function Search() {
         required
       >
       </input>
-      
-      { isLoading
-        ? <Loading />
-        : (query.length > 3 &&
-            <Suggestions results={artistList} />
-          )
+
+      { query.length > 3 && 
+        <SuggestionsWithLoading isLoading={isLoading} results={artistList} />
       }
     </form>
   );
